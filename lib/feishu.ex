@@ -4,15 +4,7 @@ defmodule Feishu do
   """
 
   @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> Feishu.hello()
-      :world
-
+  发送消息, 默认富文本消息 post
   """
-  def hello do
-    :world
-  end
+  defdelegate send(user_ids, params, type \\ "post"), to: Feishu.Message
 end

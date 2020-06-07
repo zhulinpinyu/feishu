@@ -5,6 +5,7 @@ defmodule Feishu do
 
   @doc """
   发送消息, 默认富文本消息 post
+  who is string or list
   """
-  defdelegate send(user_ids, params, type \\ "post"), to: Feishu.Message
+  defdelegate send(who, params, type \\ "post"), to: Feishu.Message
 end

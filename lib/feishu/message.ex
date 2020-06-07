@@ -1,5 +1,5 @@
 defmodule Feishu.Message do
-  def send(user_ids, %{} = params, type) do
+  def send(user_ids, %{} = params, type) when is_list(user_ids) do
     for user_id <- user_ids do
       body = %{
         user_id: user_id,
@@ -10,20 +10,24 @@ defmodule Feishu.Message do
     end
   end
 
+  def send(user_id, %{} = params, type) do
+    send([user_id], %{} = params, type)
+  end
+
   defp content("text", %{content: content}), do: content
-  defp content("post", %{title: title, content: content}) do
+  defp content("post", %{title: title, contents: contents}) do
     %{
       post: %{
         zh_cn: %{
           title: title,
-          content: [
+          content: Enum.map(contents, fn content ->
             [
               %{
                 tag: "text",
                 text: content
               }
             ]
-          ]
+          end)
         }
       }
     }

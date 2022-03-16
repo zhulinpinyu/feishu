@@ -4,7 +4,7 @@ defmodule Feishu do
   """
 
   @doc """
-  send text message to someone
+  send text message to somebody
   """
   defdelegate send(who, params, type \\ "post"), to: Feishu.Message
 end

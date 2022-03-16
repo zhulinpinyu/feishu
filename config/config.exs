@@ -1,4 +1,4 @@
-use Mix.Config
+import Config
 
 config :feishu,
   app_id: System.get_env("APP_ID"),

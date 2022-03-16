@@ -4,7 +4,7 @@ defmodule Feishu.MixProject do
   def project do
     [
       app: :feishu,
-      version: "0.1.2",
+      version: "0.1.5",
       elixir: "~> 1.6",
       start_permanent: Mix.env() == :prod,
       build_embedded: Mix.env() == :prod,
